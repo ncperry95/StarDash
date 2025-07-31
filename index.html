@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#0b0c10" />
+  <title>Space Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">🪐 Space Hub</div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#widgets">Dashboard</a>
+      <a href="#todo">To-Do</a>
+      <a href="#bookmarks">Bookmarks</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#settings">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="starfield"></canvas>
+    <div class="hero-content">
+      <h1>🌌 Welcome to Your Space Dashboard</h1>
+      <p>Live weather, news, clock, moon phase, and more—all under the stars.</p>
+      <button onclick="document.getElementById('widgets').scrollIntoView({ behavior: 'smooth' })">
+        Explore Widgets ↓
+      </button>
+    </div>
+  </section>
+
+  <!-- Widgets Section -->
+  <section id="widgets" class="container">
+    <div class="widget-row">
+      <div class="widget">
+        <div class="widget-header">🕒 Local Time</div>
+        <div id="clock">--:--:--</div>
+      </div>
+      <div class="widget">
+        <div class="widget-header">🌤️ Weather</div>
+        <a id="weather" class="weatherwidget-io"
+           href="https://forecast7.com/en/42d36n71d06/boston/"
+           data-label_1="WEATHER" data-label_2="–" data-theme="dark">LOADING…</a>
+      </div>
+      <div class="widget">
+        <div class="widget-header">🌙 Moon Phase</div>
+        <div id="moon-phase">Loading…</div>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-header">📰 Latest News</div>
+      <iframe src="https://rss.app/embed/v1/wall/53u8dZzPNzZ92AAg" height="350" style="width:100%; border-radius: 8px;"></iframe>
+    </div>
+  </section>
+
+  <!-- To-Do Section -->
+  <section id="todo" class="container">
+    <h2>✅ To-Do List</h2>
+    <div class="widget">
+      <input id="new-task" placeholder="Add new task...">
+      <button onclick="addTask()">➕ Add</button>
+      <ul id="task-list"></ul>
+    </div>
+  </section>
+
+  <!-- Bookmarks -->
+  <section id="bookmarks" class="container">
+    <h2>🔖 Bookmarks</h2>
+    <div class="widget">
+      <ul>
+        <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
+        <li><a href="https://news.google.com" target="_blank">Google News</a></li>
+        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Calendar Embed -->
+  <section id="calendar" class="container">
+    <h2>📅 Calendar</h2>
+    <div class="widget">
+      <iframe src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </section>
+
+  <!-- Settings -->
+  <section id="settings" class="container">
+    <h2>⚙️ Settings</h2>
+    <label><input type="checkbox" id="toggle-stars" checked> Enable Shooting Stars</label>
+    <button id="refresh-btn">🔄 Refresh Weather & Sun Data</button>
+  </section>
+
+  <footer id="footer">
+    <p>Built with ❤️ by Nathan • &copy; 2025</p>
+  </footer>
+
+  <script src="main.js" type="module"></script>
+  <script>
+    !(function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://weatherwidget.io/js/widget.min.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    })(document, 'script', 'weatherwidget-io-js');
+  </script>
+</body>
+</html>

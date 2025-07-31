@@ -1,0 +1,254 @@
+/* === Base === */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #f0f0f0;
+  background: var(--sky-gradient);
+  transition: background 1s ease;
+  overflow-x: hidden;
+}
+:root {
+  --sky-gradient: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  --dawn-gradient: radial-gradient(ellipse at bottom, #FF5E62 0%, #FF9966 100%);
+  --dusk-gradient: radial-gradient(ellipse at bottom, #2C3E50 0%, #FD746C 100%);
+}
+
+/* === Sidebar === */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.sidebar-logo {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #00ffff;
+}
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sidebar nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+.sidebar nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #00ffff;
+}
+
+/* === Layout Adjustment for Sidebar === */
+body {
+  padding-left: 200px;
+}
+
+/* === Hero Section === */
+#hero {
+  position: relative;
+  height: 100vh;
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+#starfield {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 2s ease-out;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.hero-content button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #00bcd4;
+  color: white;
+  transition: background 0.3s, transform 0.2s;
+}
+.hero-content button:hover {
+  background: #0097a7;
+  transform: scale(1.05);
+}
+
+/* === Container === */
+.container {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+/* === Widgets === */
+.widget-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.widget {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  flex: 1;
+  min-width: 280px;
+  padding: 1rem;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.widget:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+.widget-header {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #00ffff;
+}
+
+/* === Clock & Moon Phase === */
+#clock, #moon-phase {
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+
+/* === To-Do List === */
+#todo input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 70%;
+  margin-right: 0.5rem;
+  border-radius: 6px;
+  border: none;
+}
+#todo button {
+  padding: 0.5rem 1rem;
+  background: #00aa88;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#todo button:hover {
+  background: #008f73;
+}
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+#task-list li {
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#task-list li:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+#task-list li button {
+  background: transparent;
+  border: none;
+  color: #ff8888;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* === Settings === */
+#settings label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+#settings button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: #444;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#settings button:hover {
+  background: #555;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #888;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  body {
+    padding-left: 0;
+  }
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 1rem;
+    border-right: none;
+    justify-content: space-around;
+  }
+  .sidebar nav {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+}
